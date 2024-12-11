@@ -23,10 +23,17 @@ let lightingImages = [
     'https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/lighting/3.jpg',
     'https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/lighting/4.jpg',
 ]
-
+function preloadImages() {
+    const allImages = [...p3Images, ...p4Images, ...lightingImages];
+    allImages.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Show content and hide others
+    preloadImages();
     function showContent(contentId) {
         // Hide all dropdown content and other sections
         document.querySelectorAll('.dropdown-content, .content-section').forEach(content => {
