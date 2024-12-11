@@ -4,7 +4,6 @@
   box-sizing: border-box;
   position: relative;
   font-family:Arial, Helvetica, sans-serif;
-
 }
 
 html,
@@ -50,6 +49,7 @@ ul {
 .menu {
   display: flex;
   gap: 5vw;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .main-menu {
@@ -58,13 +58,14 @@ ul {
   cursor: pointer;
   font-weight: bold;
   font-size: 1.2em;
-
+  font-family:Arial, Helvetica, sans-serif;
 
 }
 
 .name {
   font-weight: bold;
   font-size: 1.2em;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .dropdown-wrapper {
@@ -181,6 +182,7 @@ img.contain {
   left: 30px;
   bottom: 30px;
   width: 50%;
+  font-size: 16px;
 }
 
 
@@ -274,32 +276,6 @@ img.contain {
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* .image-container-box .right-icon {
-  left: auto;
-  right: 0;
-} */
-
-.content-section {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100号;
-  height: 100%;
-  background: black; /* 0ptional: Ensure a consistent background */
-  overflow-y: auto; /* Allow scrolling if content exceeds screen size */
-  padding: 20px;
-}
-
-.about-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5vh;
-}
-
-.intro {
-  width: 50%;
-}
 
 .project-img {
   display: block;
@@ -355,8 +331,8 @@ img.contain {
   display: none;
 }
 .pictureCont-box.about{
-  top: 50px;
-  position: relative;
+  /* top: 50px; */
+  position: absolute;
   left: 0;
 }
 .pictureCont-box.about .left-icon{
@@ -372,7 +348,8 @@ img.contain {
 
 .inspirations-box{
   flex-wrap: wrap;
-  gap:0 !important;
+  height: 200vh;
+  /* gap:0 !important; */
 }
 .inspirations-box.hide{
   display: none;
@@ -380,8 +357,45 @@ img.contain {
 .inspirations-box .ins-item{
   /* flex: 0 0 50%; */
   height: 50vh;
-  margin: 100px 30px 200px 30px;
+  margin: 0 30px 200px 50px;
 }
 .normal-box.hide{
   display: none;
+}
+
+.title {
+  font-size: 2em;
+  font-family: "Times New Roman", serif;
+  text-align: center;
+}
+
+.project6 {
+  display: none;
+}
+
+.project3 {
+  display: none;
+}
+
+.project1 {
+  display: none;
+}
+.project2 {
+  display: none;
+}
+
+.project4 {
+  display: none;
+}
+
+.project5 {
+  display: none;
+}
+
+#inspirations {
+  display: none;
+}
+
+#lt,#lt1,#l-lt,#rt,#rt1,#l-rt {
+  cursor: pointer;
 }
