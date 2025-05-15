@@ -69,7 +69,6 @@ ul {
 }
 
 .dropdown-wrapper {
-  width: 8vw;
 }
 
 .dropdown-content {
@@ -446,13 +445,13 @@ canvas {
 .demo {
   position: absolute;
   text-align: center;
-  opacity: 1; /* 初始完全不透明 */
-  transition: opacity 3s ease; /* 三秒淡出效果 */
+  opacity: 1;
+  transition: opacity 5s ease;
 
 }
 
 .demo.fade-out {
-  opacity: 0; /* 完全透明 */
+  opacity: 0;
 }
 .demo p {
   font-size: 24px;

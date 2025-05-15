@@ -649,7 +649,7 @@ const ctx = mainCanvas.getContext('2d');
 const freezeCtx = freezeCanvas.getContext('2d');
 
 const CANVAS_WIDTH = window.innerWidth;
-const CANVAS_HEIGHT = 650;
+const CANVAS_HEIGHT = window.innerHeight - 100;
 const IMG_WIDTH = 650;
 
 let scanPosition = 0;
@@ -777,4 +777,4 @@ setTimeout(() => {
     document.querySelector('.demo').style.display = 'none';
     document.getElementsByClassName('canvas-container')[0].style.display = 'block';
     initA();
-    }, 3000);
+    }, 5000);
