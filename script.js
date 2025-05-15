@@ -763,6 +763,24 @@ function initA() {
         isDragging = false;
     });
 
+    // 触摸事件
+    window.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        getCanvasPosition(e.touches[0]); // 使用第一个触摸点
+        e.preventDefault(); // 阻止默认行为，避免页面滚动
+    });
+
+    window.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            getCanvasPosition(e.touches[0]);
+            e.preventDefault(); // 阻止默认行为，避免页面滚动
+        }
+    });
+
+    window.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
     function animate() {
         updateScanLine();
         if(!isPaused) freezeContent();
