@@ -48,7 +48,7 @@ ul {
 
 .menu {
   display: flex;
-  gap: 5vw;
+  gap: 100px;
   font-family:Arial, Helvetica, sans-serif;
 }
 
@@ -201,14 +201,10 @@ img.contain {
 .image-container-homepage{
   height: calc(100vh - 500px);
   position: relative;
-  width: 50%;
+  width: 100%
 }
 
-.image-container {
-  height: calc(100vh - 400px);
-  position: relative;
-  width: 70%;
-}
+
 
 .image-container img {
   object-fit: contain;
@@ -396,6 +392,70 @@ img.contain {
   display: none;
 }
 
-#lt,#lt1,#l-lt,#rt,#rt1,#l-rt {
+#personal-info {
+  display: none;
+}
+
+/* 新增页面样式 */
+.newsroom {
+  display: none;
+}
+
+.psa {
+  display: none;
+}
+
+.course-reflection {
+  display: none;
+}
+
+.ctv {
+  display: none;
+}
+
+#lt,#lt1,#l-lt,#rt,#rt1,#l-rt,#lt2,#rt2,#lt3,#rt3 {
   cursor: pointer;
+}
+
+
+/* 新增扫描线样式 */
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,1);
+  z-index: 3; /* 确保在最上层 */
+  pointer-events: none;
+  transform: translateY(0);
+}
+.canvas-container {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 650px;
+  margin: 100px auto;
+  overflow: visible; /* 允许扫描线超出容器 */
+}
+canvas {
+  position: absolute;
+  z-index: 2; /* 设置层级 */
+  cursor: none;
+  background: black;
+}
+#freezeCanvas { z-index: 1; }
+.demo {
+  position: absolute;
+  text-align: center;
+  opacity: 1; /* 初始完全不透明 */
+  transition: opacity 3s ease; /* 三秒淡出效果 */
+
+}
+
+.demo.fade-out {
+  opacity: 0; /* 完全透明 */
+}
+.demo p {
+  font-size: 24px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+
 }

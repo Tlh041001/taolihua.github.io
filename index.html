@@ -8,16 +8,23 @@
 
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
-<link rel="icon" type="image/png" href="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/favicon.png">
+  <link rel="icon" type="image/png" href="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/favicon.png">
+
 
 </head>
 
 <body>
   <div class="pictureCont">
-    <div class="image-container">
-      <img id="display-image" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/homepage-pic.jpg">
+    <div class="demo">
+      <p>A simple drag to make your own peach</p>
     </div>
-  </div>
+      <div class="canvas-container">
+        <!-- 新增扫描线容器 -->
+        <div id="scanLine" class="scan-line"></div>
+        <canvas id="freezeCanvas"></canvas>
+        <canvas id="mainCanvas"></canvas>
+      </div>
+    </div>
   <div class="pictureCont-box hide">
     <div class="image-container-box">
       <div class="item normal-box">
@@ -37,11 +44,9 @@
     <section class="menu">
       <!-- <div class="main-menu"><a href="#">Home</a></div> -->
       <div class="dropdown-wrapper">
-        <div class="dropbtn main-menu">Works</div>
+        <div class="dropbtn main-menu">Sem1</div>
         <div id="works" class="dropdown-content">
-          <!-- Semester One -->
           <div class="semester">
-            <p style="margin-bottom: 10px;">Semester One</p>
             <ol class="a">
               <li class="project-name" data-project="project1">60s Daily Vlog
               </li>
@@ -79,11 +84,11 @@
                   <p class="project-intro">This video essay aims to analyze and discuss the portrayal of Maleficent in
                     Maleficent (2014). I selected two key scenes—Maleficent cursing Aurora and later kissing her out of
                     remorse—to explore how director Robert Stromberg utilizes camera work, lighting design, and sound
-                    effects to depict Maleficent’s duality as both a villainous figure and a character capable of
+                    effects to depict Maleficent's duality as both a villainous figure and a character capable of
                     empathy.
                     Throughout this analysis, I gained a deeper understanding of how cinematic techniques work together
-                    to construct complex character portrayals. For instance, in the cursing scene, Stromberg’s use of
-                    low-angle shots and stark lighting emphasized Maleficent’s power and anger. Conversely, in the
+                    to construct complex character portrayals. For instance, in the cursing scene, Stromberg's use of
+                    low-angle shots and stark lighting emphasized Maleficent's power and anger. Conversely, in the
                     kissing scene, warm tones and soft music highlighted her vulnerability and remorse. This stark
                     contrast revealed how Stromberg challenges traditional binary notions of good and evil by adding
                     depth to characters.
@@ -100,8 +105,25 @@
               </li>
             </ol>
           </div>
-          <!-- Semester Two -->
         </div>
+      </div>
+      <div class="dropdown-wrapper">
+        <div class="dropbtn main-menu">Sem2</div>
+        <div id="sem2" class="dropdown-content">
+          <div class="semester">
+            <ol class="a">
+              <li class="project-name" data-project="ctv">Citizen Journalist Vlog
+              </li>
+              <li class="project-name" data-project="newsroom">Newsroom Project
+              </li>
+              <li class="project-name" data-project="psa">Public Service Announcement
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-wrapper">
+        <div class="main-menu project-name" data-project="course-reflection">Reflection</div>
       </div>
       <div class="dropdown-wrapper">
         <div class="dropbtn main-menu">About</div>
@@ -141,35 +163,41 @@
   <div class="project3">
 
 
-    <div style="margin-top: 50px;display: flex; align-items: center;justify-content: center;margin-right: 150px">
-      <div style="margin-left: 100px">
+    <div style="margin-top: 50px; display: flex; align-items: center; justify-content: center; margin-right: 150px; margin-left: 100px;">
+      <!-- 上半部分 - 保持不变 -->
+      <div>
         <p style="text-align: left;font-family:'Times New Roman', serif;" class="title">
           Photographic Emulation</p>
         <br><br>
         <img width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/photographic/photographic7.jpg" alt="">
       </div>
-      <div style="margin-left: 100px;width: 500px;line-height: 1.5;">
+      <div style="margin-left: 100px; width: 500px; line-height: 1.5;">
         <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
           This was our first group presentation task in the Media and Communications course. The assignment required us to select a renowned photographer, recreate three of their iconic works, and present our creative outcomes and research process through a comprehensive video essay. Our group chose Lee Friedlander, whose signature photography is characterized by reflections, shadows, and urban landscapes, showcasing a distinctive style.
         <p>
       </div>
     </div>
-
-    <div>
-    <div style="display: flex; height: 600px;  align-items: center;justify-content: center">
-      <div id="lt" style="font-size: 30px;z-index: 1000">&lt</div>
-      <div style="margin-left: 30px;margin-top: 100px">
-        <img id="p3image" width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/photographic/photographic4.jpg" alt="">
+    <br><br><br><br><br><br><br><br>
+    <!-- 下半部分 - 调整布局 -->
+    <div style="display: flex; justify-content: center;  margin-right: 150px; margin-left: 100px; position: relative;">
+      <!-- 图片容器添加相对定位 -->
+      <div style="position: relative; margin-right: 100px;">
+        <!-- 左右箭头绝对定位 -->
+        <div id="lt" style="position: absolute; left: -30px; top: 50%; transform: translateY(-50%); font-size: 30px; cursor: pointer; z-index: 1000">&lt;</div>
+        <img id="p3image" width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/photographic/photographic5.jpg" alt="">
+        <div id="rt" style="position: absolute; right: -30px; top: 50%; transform: translateY(-50%); font-size: 30px; cursor: pointer; z-index: 1000">&gt;</div>
       </div>
-      <div id="rt" style="font-size: 30px;margin-left: 30px;z-index: 1000">&gt</div>
-      <div style="margin-left: 70px;margin-top: 100px;width: 500px;line-height: 1.5;">
+
+      <!-- 右侧文字描述 -->
+      <div style="width: 500px; line-height: 1.5; margin-top: 100px;">
         <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
           During the project, I gained valuable experience in collaborative planning and execution, conducted an in-depth analysis of Friedlander’s unique artistic style, and experimented with replicating his works through lens language and composition techniques. Additionally, I learned how to redesign the recreated works to incorporate personal creativity, while enhancing skills in video editing, voiceover narration, and the application of cinematic concepts such as shot sizes and angles. This task provided me with a deeper understanding of the unique charm and value of photography as both an art form and a storytelling tool.
         </p>
       </div>
+    </div>     <br><br><br><br>
 
-    </div>
-      <div style="display: flex;align-items: center;justify-content: center">
+    <br><br><br><br>
+    <div style="display: flex;align-items: center;justify-content: center">
         <video style="z-index: 1000;width: 1000px;" class="video-box ins-item" controls src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/photographic/photographicvideo.mov"></video>
 
       </div>
@@ -270,44 +298,69 @@
   </div>
   <div id="inspirations">
 
-    <div style="margin-right:100px;margin-top:50px;display: flex; align-items: center;justify-content: center">
-      <div>
-        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title">
-          Billie Eilish</p><br><br>
-        <video style="z-index: 1000;width: 900px" class="video-box ins-item" controls src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/inspiration.mp4"></video>
+    <div style="margin-top: 50px;display: flex; align-items: center;justify-content: center;margin-right: 150px">
+      <div style="margin-left: 100px">
+        <video style="width: 400px;z-index: 1000" controls src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/billie.mp4"></video>
       </div>
-    </div>
-    <div style="margin-right:100px;display: flex; align-items: center;justify-content: center">
-      <div style="margin-top: 50px;width: 900px;line-height: 1.5;">
-
+      <div style="margin-left: 100px;width: 500px;line-height: 1.5;">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title">
+          Billie Eilish</p> <br><br>
         <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
           Billie Eilish serves as a significant inspiration for my creative work. Her dark, melancholic music style, combined with deeply personal and introspective lyrics, resonates with me on both an emotional and artistic level. The way she translates complex emotions into haunting melodies has influenced my own approach to storytelling and expression.
           <br><br>Her journey of embracing individuality and breaking conventional norms has also shaped my perspective, encouraging me to explore themes of vulnerability, authenticity, and introspection in my creations. Through her music and personal story, she has inspired me to push boundaries and craft a style that reflects my unique experiences and emotions.
-      </p>
+        </p>
       </div>
     </div>
+
+
+
   <br><br><br><br><br><br><br><br>
-      <div style="display: flex;  height: 600px; align-items: center;justify-content: center">
-        <div id="lt1" style="font-size: 30px;z-index: 1000">&lt</div>
-        <div style="margin: 50px 30px;">
-          <p  style="text-align: left;font-family:'Times New Roman', serif;" class="title">A person I adore</p>
-          <br><br>
-          <img id="p4image" width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/inspirations/1.jpg" alt="">
-        </div>
-        <div id="rt1" style="font-size: 30px;z-index: 1000">&gt</div>
-        <div style="margin-left: 70px;margin-top: 100px;width: 500px;line-height: 1.5;">
-          <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">She is the inspiration behind my creative works. Her unwavering support, kindness, and
-            resilience motivate me, while her unique perspective on life compels me to view the world through new and
-            transformative angles. The moments we shared in Japan, whether in the simplicity of daily routines or the
-            excitement of unforgettable travels, have profoundly shaped my visual perspective, teaching me to find beauty
-            in the ordinary.</br></br>
-            Furthermore, her passion for the things she loves and her dedication to personal growth inspire me to pursue
-            my own aspirations with the same fervor. Through my lens, I strive to capture the authenticity, warmth, and
-            emotion she brings into my life—qualities that have become the driving force of my creativity.
-          </p></div>
-
-
+    <div style="display: flex; justify-content: center;  margin-right: 150px; margin-left: 100px; position: relative;">
+      <!-- 图片容器添加相对定位 -->
+      <div style="position: relative; margin-right: 100px;">
+        <!-- 左右箭头绝对定位 -->
+        <div id="lt1" style="position: absolute; left: -30px; top: 50%; transform: translateY(-50%); font-size: 30px; cursor: pointer; z-index: 1000">&lt;</div>
+        <img id="p4image" width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/inspirations/1.jpg" alt="">
+        <div id="rt1" style="position: absolute; right: -30px; top: 50%; transform: translateY(-50%); font-size: 30px; cursor: pointer; z-index: 1000">&gt;</div>
       </div>
+
+      <!-- 右侧文字描述 -->
+      <div style="width: 500px; line-height: 1.5; ">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title">
+          A person I adore</p> <br><br>
+        <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">She is the inspiration behind my creative works. Her unwavering support, kindness, and
+          resilience motivate me, while her unique perspective on life compels me to view the world through new and
+          transformative angles. The moments we shared in Japan, whether in the simplicity of daily routines or the
+          excitement of unforgettable travels, have profoundly shaped my visual perspective, teaching me to find beauty
+          in the ordinary.</br></br>
+          Furthermore, her passion for the things she loves and her dedication to personal growth inspire me to pursue
+          my own aspirations with the same fervor. Through my lens, I strive to capture the authenticity, warmth, and
+          emotion she brings into my life—qualities that have become the driving force of my creativity.
+        </p>
+      </div>
+    </div>
+
+    <br><br><br><br><br><br>
+  </div>
+
+  <div id="personal-info">
+
+    <div style="display: flex;  height: 600px; align-items: center;justify-content: center">
+      <div id="lt2" style="font-size: 30px;z-index: 1000">&lt</div>
+      <div style="margin: 50px 30px;">
+        <br><br>
+        <img id="personal-image" width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Personal Info/1.jpg" alt="">
+      </div>
+      <div id="rt2" style="font-size: 30px;z-index: 1000">&gt</div>
+      <div style="margin-left: 70px;width: 500px;line-height: 1.5;">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title"> Lihua Tao</p> <br><br>
+        <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
+          Lihua Tao, born in 2004 in Guangdong, China, currently resides in Australia. Since becoming a student at Trinity College, she has been studying Media and Communications, with her current goal being admission to the University of Melbourne. She has a passion for photography and music, and is enthusiastic about traveling with different types of cameras (e.g., DSLR and film cameras) to capture the beauty of life through her lens.
+        </p>
+      </div>
+
+
+    </div>
     <br><br><br><br><br><br>
   </div>
   <div class="project2">
@@ -329,6 +382,146 @@
         </div>
 
       </div>
+  </div>
+  <!-- 新增Newsroom Project页面 -->
+  <div class="newsroom">
+
+
+    <div style="margin-top: 50px;display: flex; align-items: center;justify-content: center;margin-right: 150px">
+      <div style="margin-left: 100px">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title">
+          Newsroom Project
+        </p>
+        <br><br>
+        <img width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Newsroom/Article/1.jpg" alt="">
+      </div>
+      <div style="margin-left: 100px;width: 500px;line-height: 1.5;">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title"> News Article</p> <br><br>
+        <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
+          This was my first attempt at writing a feature article for a media newsroom project. Our topic explored oversharing culture through student interviews and the case of Kanye West, using an entertainment-style headline to draw attention before delving into more serious reflections on social behaviour.
+          <br><br>
+          Through this task, I learned how to maintain a consistent message while crafting content that captures audience interest. It also helped me understand the importance of layout and formatting in making a feature article clear and engaging. After completing this article, I realized that if I take on a similar article-writing task in the future, I should outline the structure earlier, spend more time on editing, and seek feedback from the editor or teammates to improve clarity and flow.
+        </p>
+      </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+
+    <div style="display: flex; justify-content: center;  margin-right: 150px; margin-left: 100px; position: relative;">
+      <!-- 图片容器添加相对定位 -->
+      <div style="position: relative; margin-right: 100px;">
+        <!-- 左右箭头绝对定位 -->
+        <div id="lt3" style="position: absolute; left: -30px; top: 50%; transform: translateY(-50%); font-size: 30px; cursor: pointer; z-index: 1000">&lt;</div>
+        <img id="prodcast-image" width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Newsroom/Podcast/1.jpg" alt="">
+        <div id="rt3" style="position: absolute; right: -30px; top: 50%; transform: translateY(-50%); font-size: 30px; cursor: pointer; z-index: 1000">&gt;</div>
+      </div>
+
+      <!-- 右侧文字描述 -->
+      <div style="width: 500px; line-height: 1.5; ">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title"> Podcast</p> <br><br>
+        <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
+          Building on the ideas explored in our article, my group created a podcast that approached the topic of oversharing in a humorous and discussion way. To prepare, we divided the script equally, added a voting segment, where each member shared a story, and chose the most awkward one to make this podcast sounds more interesting.
+          <br><br>
+          Also, practicing in the library’s recording studio and completing a full recording session at RMIT SYN Radio was a new experience for me. It gave me the opportunity to become familiar with the entire recording process, which from adjusting microphone placement to managing voice tone and volume. This podcast workshop experience not only strengthened my communication skills, but also taught me how to keep a podcast engaging and cohesive, even when discussing more serious themes beneath the humor.
+        </p>
+        <br><br>
+        <audio controls style="z-index: 1000;">
+          <source src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Newsroom/Podcast/TRINITY PODREC.mp3" type="audio/mpeg">
+          Your browser does not support frames.
+        </audio>
+      </div>
+    </div>
+
+    <br><br><br><br><br><br>
+
+  </div>
+
+  <!-- 新增Public Service Announcement页面 -->
+  <div class="psa">
+    <div style="margin-top: 50px;display: flex; align-items: center;justify-content: center;margin-right: 150px">
+      <div style="margin-left: 100px">
+        <p style="text-align: left;font-family:'Times New Roman', serif;" class="title">
+          Public Service Announcement</p>
+        <br><br>
+        <img width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Public Service/Poster.JPG" alt="">
+      </div>
+      <div style="margin-left: 100px;width: 500px;line-height: 1.5;">
+        <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
+          In the final assignment, our PSA campaign aimed to deliver an anti-bullying message in a fun and creative way that appeals to children. Inspired by fast food and collectible blind boxes, we created five fun characters, each representing a step against bullying, such as building up courage or giving support. To promote the campaign, we used three strategies: a poster menu, #AntiBullyChallenge videos, and advertisement video. I was responsible for character design, 3D model layout, and packaging visuals design in this campaign.        <p>
+      </div>
+    </div>
+    <br><br>
+    <br><br>
+    <div style="display: flex;align-items: center;justify-content: center">
+      <video style="z-index: 1000;width: 1000px;" class="video-box ins-item" controls src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Public Service/mnc ad video.mp4"></video>
+
+    </div>
+    <br><br>
+    <br><br>
+
+    <div style="margin-top: 50px;display: flex; align-items: center;justify-content: center;margin-right: 150px">
+      <div style="margin-left: 100px">
+        <img width="400" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Public Service/Product pic.jpg" alt="">
+      </div>
+      <div style="margin-left: 100px;width: 500px;line-height: 1.5;">
+        <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px">
+          One of the main challenges was balancing visual appeal with meaningful content, as we wanted the product to be fun but still deliver a strong message, while after held a few team discussions and made multiple changes, we overcame these difficulties. Thereby, the biggest success for our team was turning the original ideas into a tangible product — one with a strong visual identity that children found fun and easy to understand, while also clearly delivering an anti-bullying message. From this, I learned how creativity and purpose can work together.
+          <br><br>
+          However, one area we could improve is target audience testing, which getting feedback from actual children. This step can help us better tailor the design and language to their understanding and be closer to their interests. This assignment and experience helped me develop skills in campaign promotion, including how to use visuals and packaging to engage a young audience, further raise awareness of social issues.
+      </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div style="display: flex;align-items: center;justify-content: center">
+    <embed style="z-index: 1000;" src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Public Service/PSA campaign PPT.pdf" type="application/pdf" width="1000px" height="600px">
+    </div>
+      <br><br><br><br>
+  </div>
+
+  <!-- 新增Course Reflection页面 -->
+  <div class="course-reflection">
+    <div style="margin:50px auto;width: 800px;text-align: center;">
+      <p style="text-align: center;font-family:'Times New Roman', serif;" class="title">
+        Course Reflection</p>
+      <br><br>
+      <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px;line-height: 1.8;">
+        During this year by studying media and communication, I explored a wide range of creative and communication-based media assignments — from storytelling and short-form video in Semester one to journalism, podcasting, and campaign work in Semester two. Each project challenged me to communicate ideas clearly and creatively, while tailoring content to different audiences.
+        <br><br>
+        Each semester had a distinct focus. Semester one was centered on building technical skills and personal creative exploration, through tasks like the daily vlog, lighting workshop, photographic emulation, and stop-motion animation. These helped me develop my understanding of composition, lighting, timing, and editing, also discovering my visual style in this progress. In contrast, Semester two emphasized strategic communication and media’s role in social impact. Projects like the citizen journalism video, podcast on oversharing, and PSA campaign taught me how to structure narratives, think about audience engagement, and combine visuals with clear messaging. The PSA campaign in particular helped me apply design and communication together, which using 3D characters, packaging, posters, and an ad video to deliver an anti-bullying message to children.
+        <br><br>
+        Over the past year, I have not only strengthened my creative and technical skills, but also improved my ability to plan and express ideas. Through doing a few assignments, I have gained a clearer understanding of my future academic and career path, which means I found that what I was truly interested in marketing communication.
+        <br><br>
+        Finally, I am also very grateful to have met Yuliya as my tutor and lecturer during the learning process. She always gives me encouragement and useful feedback, which enables me to build up confidence in the process of media content planning, visual design and purposeful production.
+        <br><br>
+
+      </p>
+    </div>
+  </div>
+
+  <div class="ctv">
+    <div style="margin:50px auto;width: 800px;text-align: center;">
+      <p style="text-align: center;font-family:'Times New Roman', serif;" class="title">
+        Citizen Journalist Vlog</p>
+      <br><br>
+      <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px;line-height: 1.8;">
+        For this citizen journalism task, I created a short soft news video reporting on the recent “migration” of American TikTok users to the Chinese platform RedNote, calling themselves "TikTok refugees."
+        <br><br>
+        To prepare, I watched many related news videos and articles from Chinese and American platform. These reference not only gave me a basic understanding of the news reporting process, but also guided me on how to efficiently deliver key information within a limited time frame.
+        <br><br>
+      <div style="display: flex;align-items: center;justify-content: center">
+
+        <video style="z-index: 1000;width: 1000px;" class="video-box ins-item" controls src="https://my-oss-test-hjw.oss-cn-beijing.aliyuncs.com/assets/folio/Citizen/Breaking News.mp4" ></video>
+
+      </div>
+        <br><br>
+      <p style="text-align:left;font-family:'Times New Roman', serif;font-size: 18px;line-height: 1.8;">
+
+      In this video, to enhance the depth and visual appeal of the report, I included supporting visuals such as some video clips showing friendly interactions between Chinese and American users. While the story was timely and visually rich, I realized that I need to improve in editing. For example, adding a formal news broadcast background and channel branding could make the report appear more professional and credible, which also help viewers associate it more with authentic news content.
+
+        <br><br>
+      This task not only gave me an experience in planning and producing a structurally complete and accurate citizen news video, but also helped me realize that while soft news may not focus on hard data, it can still effectively respond to social issues through storytelling and visual language.
+      <br><br>
+      </p>
+    </div>
   </div>
 <div>
 
